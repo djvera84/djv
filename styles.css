@@ -1,0 +1,172 @@
+/* danieljvera.com — shared styles */
+:root {
+  --bg: #ffffff;
+  --surface: #f4f5f7;
+  --ink: #1c2127;
+  --muted: #59626e;
+  --rule: #e2e5e9;
+  --accent: #2b5a87;
+  --accent-ink: #ffffff;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --measure: 40rem;
+  --page: 64rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15181c;
+    --surface: #1c2025;
+    --ink: #e7e9ec;
+    --muted: #a0a8b2;
+    --rule: #2c3137;
+    --accent: #8fb6dd;
+    --accent-ink: #10161d;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+img { max-width: 100%; height: auto; }
+a { color: var(--accent); text-underline-offset: 0.15em; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+  margin: 0;
+}
+h1 { font-size: clamp(2.2rem, 5vw, 3.1rem); letter-spacing: -0.01em; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+p, ul { margin: 0; }
+
+.wrap {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
+
+/* Header: wraps under the name on small screens, so no menu button is needed */
+.site-header { border-bottom: 1px solid var(--rule); }
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.1rem;
+}
+.site-name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+.site-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; font-size: 1rem; }
+.site-nav a { color: var(--muted); text-decoration: none; }
+.site-nav a:hover { color: var(--ink); }
+.site-nav a[aria-current="page"] { color: var(--ink); font-weight: 600; }
+
+main section { padding-block: 3.5rem; }
+main section + section { border-top: 1px solid var(--rule); }
+.section-title { margin-bottom: 1.5rem; }
+.lede { color: var(--muted); font-size: 1.2rem; max-width: var(--measure); margin-top: 0.75rem; }
+.prose { max-width: var(--measure); display: grid; gap: 1rem; }
+.prose h2 { margin-top: 1.5rem; }
+.prose h2:first-child { margin-top: 0; }
+
+/* Home hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 3rem; align-items: center; }
+.hero .role { font-size: 1.25rem; color: var(--muted); margin-top: 0.5rem; }
+.hero .intro { max-width: var(--measure); margin-top: 1.25rem; }
+.hero img { border-radius: 4px; aspect-ratio: 4 / 5; object-fit: cover; object-position: 58% 30%; width: 100%; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+.button {
+  display: inline-block;
+  padding: 0.6rem 1.1rem;
+  border-radius: 4px;
+  border: 1px solid var(--accent);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.button.primary { background: var(--accent); color: var(--accent-ink); }
+.button:hover { text-decoration: underline; }
+
+/* Highlights: a plain two-column list, not cards */
+.highlights { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 3rem; }
+.highlight { display: grid; gap: 0.5rem; align-content: start; }
+.highlight p { color: var(--muted); }
+.logos { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; min-height: 40px; margin-bottom: 0.25rem; }
+.logos img { height: 32px; width: auto; }
+.logos img.square { height: 36px; border-radius: 6px; }
+
+/* Lists */
+.bullets { padding-left: 1.2rem; display: grid; gap: 0.35rem; }
+.bullets li::marker { color: var(--muted); }
+
+/* Experience */
+.job {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 0.5rem 2rem;
+  padding-block: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.job:first-of-type { border-top: 0; padding-top: 0; }
+.job .when { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 1rem; padding-top: 0.2rem; }
+.job .where { color: var(--muted); margin: 0.2rem 0 0.75rem; }
+.job .summary { margin-bottom: 0.75rem; max-width: var(--measure); }
+.job-head { display: flex; align-items: center; gap: 0.9rem; }
+.job-head img { height: 28px; width: auto; }
+.job-head img.square { height: 32px; border-radius: 5px; }
+
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+.skills p { color: var(--muted); }
+.skills h3 { margin-bottom: 0.4rem; }
+
+/* About */
+.two-col { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 4rem; }
+.aside { display: grid; gap: 2rem; align-content: start; font-size: 1rem; }
+.aside h2 { font-size: 1.2rem; margin-bottom: 0.6rem; }
+.aside p + p { margin-top: 0.6rem; }
+.aside .muted { color: var(--muted); }
+
+/* Contact */
+.contact-list { display: grid; gap: 1.25rem; max-width: var(--measure); }
+.contact-list dt { color: var(--muted); font-size: 0.95rem; }
+.contact-list dd { margin: 0; font-size: 1.2rem; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.95rem; }
+.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem 2rem; padding-block: 2rem; }
+.site-footer nav { display: flex; gap: 1.5rem; }
+.site-footer a { color: var(--muted); }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 2rem; }
+  .hero img { max-width: 320px; order: -1; }
+  .highlights, .skills, .two-col { grid-template-columns: 1fr; }
+  .two-col { gap: 2.5rem; }
+  .job { grid-template-columns: 1fr; }
+  main section { padding-block: 2.5rem; }
+}
+
+/* Logos are drawn for white backgrounds; give them a white chip in dark mode */
+@media (prefers-color-scheme: dark) {
+  .logos img:not(.square), .job-head img:not(.square) { background: #ffffff; padding: 4px 8px; border-radius: 4px; box-sizing: content-box; }
+}
