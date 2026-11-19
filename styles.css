@@ -170,3 +170,6 @@ main section + section { border-top: 1px solid var(--rule); }
 @media (prefers-color-scheme: dark) {
   .logos img:not(.square), .job-head img:not(.square) { background: #ffffff; padding: 4px 8px; border-radius: 4px; box-sizing: content-box; }
 }
+
+.job-title { font-size: 1.4rem; }
+.lede.tight { margin-top: 0.25rem; }
