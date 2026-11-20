@@ -1,0 +1,12 @@
+// Cloudflare Workers static-assets config for danieljvera.com
+{
+  "name": "danieljvera",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": ".",
+    // serve 404.html for unknown paths instead of an empty 404
+    "not_found_handling": "404-page",
+    // /about.html -> /about, matching the sitemap
+    "html_handling": "auto-trailing-slash"
+  }
+}
